@@ -23,57 +23,77 @@ const Signup = ({ setUser }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-2xl mb-6 text-center">Sign Up</h2>
+    <div className="min-h-screen flex items-center justify-center bg-blue-200">
+      <div className="bg-white p-8 rounded shadow-md w-96 min-h-[500px] flex flex-col justify-center relative">
+        {/* Bottom Left Dots */}
+        <div className="absolute bottom-1 left-1 grid grid-cols-4 gap-1">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <div key={`bl-${i}`} className="w-0.5 h-0.5 bg-blue-200 rounded-full"></div>
+          ))}
+        </div>
+
+        {/* Top Right Dots */}
+        <div className="absolute top-1 right-1 grid grid-cols-4 gap-1">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <div key={`tr-${i}`} className="w-0.5 h-0.5 bg-blue-200 rounded-full"></div>
+          ))}
+        </div>
+
+        <h2 className="text-2xl mb-6 text-center flex items-center justify-center">
+          <img src="src/assets/IMG_6731.jpg" alt="Logo" className="w-8 h-8 mr-2" />
+          chat
+        </h2>
+
         {error && <p className="text-red-500">{error}</p>}
+
         <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-            <label>Name:</label>
+          <div className="mb-4">
             <input 
               type="text" 
               name="name" 
+              placeholder="Name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full border p-2 rounded"
+              className="w-full border border-gray-400 p-2 rounded placeholder-gray-400 text-[0.8rem]"
               required 
             />
           </div>
           <div className="mb-4">
-            <label>Email:</label>
             <input 
               type="email" 
               name="email" 
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full border p-2 rounded"
+              className="w-full border border-gray-400 p-2 rounded placeholder-gray-400 text-[0.8rem]"
               required 
             />
           </div>
           <div className="mb-4">
-            <label>Mobile:</label>
             <input 
               type="text" 
-              name="mobile" 
+              name="mobile"
+              placeholder="Phone Number"
               value={formData.mobile}
               onChange={handleChange}
-              className="w-full border p-2 rounded"
+              className="w-full border border-gray-400 p-2 rounded placeholder-gray-400 text-[0.8rem]"
               required 
             />
           </div>
           <div className="mb-4">
-            <label>Password:</label>
             <input 
               type="password" 
-              name="password" 
+              name="password"
+              placeholder="Password" 
               value={formData.password}
               onChange={handleChange}
-              className="w-full border p-2 rounded"
+              className="w-full border border-gray-400 p-2 rounded placeholder-gray-400 text-[0.8rem]"
               required 
             />
           </div>
-          <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">Sign Up</button>
+          <button type="submit" className="w-full bg-slate-400 text-white p-2 rounded">Sign Up</button>
         </form>
+
         <p className="mt-4 text-center">
           Already have an account? <a href="/login" className="text-blue-500">Login</a>
         </p>
